@@ -86,7 +86,7 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
 
 
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.READ_CONTACTS)
+                Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
@@ -108,9 +108,6 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         1);
 
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         }
     }
@@ -124,9 +121,9 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
         }
 
         for (int i = 0; i < permissions.length; i++) {
-            Log.i("XXX", "onRequestPermissionsResult Permission: " + permissions[i] + "Result: " + grantResults[i]);
-            if (permissions[i].equals(Manifest.permission.READ_PHONE_STATE) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.i("XXX", "READ PHONE STATE permission has now been granted.");
+            Log.i("passdroid", "onRequestPermissionsResult Permission: " + permissions[i] + "Result: " + grantResults[i]);
+            if (permissions[i].equals(Manifest.permission.READ_EXTERNAL_STORAGE) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Log.i("passdroid", "READ_EXTERNAL_STORAGE permission has now been granted.");
             }
         }
     }

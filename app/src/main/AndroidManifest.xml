@@ -11,13 +11,12 @@
         android:smallScreens="true"
         android:anyDensity="true"/>
     
-    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="26"/>
-    
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         
     <application android:icon="@drawable/safe_icon_large"
                  android:label="@string/app_name"
-                 android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+                 android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+                 android:allowBackup="false">
 
         <activity android:label="@string/app_name"
                   android:name="MainActivity"

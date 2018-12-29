@@ -115,7 +115,7 @@ public class PasswordEntry implements Comparable<PasswordEntry> {
         SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");
         try {
             Random rnd = new Random();
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", "BC");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
 
             byte [] iv = new byte[16];
             rnd.nextBytes(iv);
@@ -143,7 +143,7 @@ public class PasswordEntry implements Comparable<PasswordEntry> {
             byte [] encBytes = Base64.decode(encrypted);
 
             SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");  
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", "BC");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
             
             byte [] iv = new byte[16];
             System.arraycopy(encBytes, 0, iv, 0, iv.length);
@@ -169,7 +169,7 @@ public class PasswordEntry implements Comparable<PasswordEntry> {
 
             SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");  
 
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", "BC");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
             byte [] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             IvParameterSpec ivSpec = new IvParameterSpec(iv);
             
@@ -193,7 +193,7 @@ public class PasswordEntry implements Comparable<PasswordEntry> {
 
             SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");  
             //Cipher cipher = Cipher.getInstance("AES");
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding", "BC"); 
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding");
             cipher.init(Cipher.DECRYPT_MODE, skeySpec);  
             decBytes = cipher.doFinal(encBytes);
             decrypted = new String(decBytes, 2, decBytes.length - 2, "UTF8");

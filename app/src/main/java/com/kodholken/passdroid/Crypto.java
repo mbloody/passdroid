@@ -123,7 +123,7 @@ public class Crypto {
 
         try {
             SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");
-            Cipher c = Cipher.getInstance("AES/CBC/NoPadding", "BC");
+            Cipher c = Cipher.getInstance("AES/CBC/NoPadding");
             IvParameterSpec ivSpec = new IvParameterSpec(iv);
             c.init(Cipher.ENCRYPT_MODE, skeySpec, ivSpec);
             byte[] res = c.doFinal(plain);
@@ -161,7 +161,7 @@ public class Crypto {
         SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");
         try {
             Random rnd = new Random();
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", "BC");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
             byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             IvParameterSpec ivSpec = new IvParameterSpec(iv);
             cipher.init(Cipher.ENCRYPT_MODE, skeySpec, ivSpec);
@@ -206,7 +206,7 @@ public class Crypto {
 
         try {
             SecretKeySpec skeySpec = new SecretKeySpec(key, "AES");
-            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", "BC");
+            Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
             byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             IvParameterSpec ivSpec = new IvParameterSpec(iv);
             cipher.init(Cipher.DECRYPT_MODE, skeySpec, ivSpec);

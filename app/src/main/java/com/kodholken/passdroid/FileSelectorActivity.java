@@ -1,18 +1,10 @@
 package com.kodholken.passdroid;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-
-import android.view.MenuItem;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,6 +17,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+
 public class FileSelectorActivity extends AppCompatTimeoutListActivity {
 	private ListView fileList;
 	private TextView directoryView;
@@ -36,7 +35,7 @@ public class FileSelectorActivity extends AppCompatTimeoutListActivity {
     
     private String [] requestFiles;
     
-    public static final int RESULT_ERROR = Activity.RESULT_FIRST_USER;
+    public static final int RESULT_ERROR = AppCompatActivity.RESULT_FIRST_USER;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

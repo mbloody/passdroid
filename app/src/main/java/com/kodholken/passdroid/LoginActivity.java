@@ -19,12 +19,8 @@
 
 package com.kodholken.passdroid;
 
-import com.kodholken.passdroid.R;
-import com.kodholken.passdroid.db.DbMigration;
-import com.kodholken.passdroid.db.SystemData;
-
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,10 +28,13 @@ import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.kodholken.passdroid.db.DbMigration;
+import com.kodholken.passdroid.db.SystemData;
+
 /**
  * Activity that displays the login screen and verifies the master password.
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private EditText passwordView;
     private boolean hasBackKeyDown;

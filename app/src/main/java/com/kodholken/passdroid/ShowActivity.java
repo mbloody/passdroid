@@ -19,21 +19,21 @@
 
 package com.kodholken.passdroid;
 
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.kodholken.passdroid.db.PasswordData;
-
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.text.ClipboardManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import com.kodholken.passdroid.db.PasswordData;
 
 /**
  * Activity that displays a password entry and let the user choose to edit or
@@ -97,13 +97,11 @@ public class ShowActivity extends AppCompatTimeoutActivity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("Edit")
-            .setIcon(R.drawable.ic_menu_edit)
-            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        MenuItemCompat.setShowAsAction(menu.add("Edit")
+            .setIcon(R.drawable.ic_menu_edit),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
-        menu.add("Delete")
-            .setIcon(R.drawable.ic_menu_delete) 
-            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        MenuItemCompat.setShowAsAction(menu.add("Delete")
+            .setIcon(R.drawable.ic_menu_delete),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
     
         return super.onCreateOptionsMenu(menu);
     }

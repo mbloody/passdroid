@@ -19,15 +19,15 @@
 
 package com.kodholken.passdroid;
 
-import java.util.Random;
-import java.util.zip.CRC32;
-
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+
+import java.util.Random;
+import java.util.zip.CRC32;
 
 public class Utils {
     public static void alertDialog(Context context, String title, 
@@ -37,7 +37,7 @@ public class Utils {
         alertDialog = new AlertDialog.Builder(context).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(message);
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 return;
             } }); 

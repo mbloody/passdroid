@@ -19,16 +19,16 @@
 
 package com.kodholken.passdroid;
 
-import com.kodholken.passdroid.db.DbMigration;
-import com.kodholken.passdroid.db.SystemData;
-
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.kodholken.passdroid.db.DbMigration;
+import com.kodholken.passdroid.db.SystemData;
 
 public class ChangePasswordActivity extends AppCompatTimeoutActivity {
     @Override
@@ -94,10 +94,9 @@ public class ChangePasswordActivity extends AppCompatTimeoutActivity {
             alertDialog = new AlertDialog.Builder(this).create();
             alertDialog.setTitle("Password changed");
             alertDialog.setMessage("The password was changed successfully.");
-            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
-                    return;
                 } }); 
             alertDialog.show();
         } else {

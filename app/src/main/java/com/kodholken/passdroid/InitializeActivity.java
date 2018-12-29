@@ -19,18 +19,16 @@
 
 package com.kodholken.passdroid;
 
-import com.kodholken.passdroid.R;
-import com.kodholken.passdroid.db.SystemData;
-
-
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class InitializeActivity extends Activity {
+import com.kodholken.passdroid.db.SystemData;
+
+public class InitializeActivity extends AppCompatActivity {
     Button okButton;
 
     @Override

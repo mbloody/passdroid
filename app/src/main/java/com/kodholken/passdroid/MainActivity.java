@@ -19,20 +19,20 @@
 
 package com.kodholken.passdroid;
 
-import com.kodholken.passdroid.db.DbMigration;
-import com.kodholken.passdroid.db.SystemData;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.kodholken.passdroid.db.DbMigration;
+import com.kodholken.passdroid.db.SystemData;
 
 /**
  * Main activity of the application. This is started upon application startup
  * and will determine which parts to launch depending on the stored application
  * state.
  */
-public class MainActivity extends Activity {	
+public class MainActivity extends AppCompatActivity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {

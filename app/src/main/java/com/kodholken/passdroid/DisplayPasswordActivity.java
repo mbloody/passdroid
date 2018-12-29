@@ -19,9 +19,9 @@
 
 package com.kodholken.passdroid;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;

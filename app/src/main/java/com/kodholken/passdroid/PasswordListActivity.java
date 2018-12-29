@@ -19,14 +19,6 @@
 
 package com.kodholken.passdroid;
 
-import android.support.v7.app.ActionBar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MenuItem.OnActionExpandListener;
-import com.kodholken.passdroid.db.PasswordData;
-
-import android.app.AlertDialog;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,11 +26,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager.LayoutParams;
 import android.view.inputmethod.InputMethodManager;
@@ -48,6 +46,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.kodholken.passdroid.db.PasswordData;
 
 /**
  * Activity that displays the user passwords.
@@ -168,7 +168,7 @@ PasswordModelListener {
     
     @Override
     public boolean onSearchRequested() {
-        searchMenuItem.expandActionView();
+        MenuItemCompat.expandActionView(searchMenuItem);
         return true;
     }
 
@@ -176,12 +176,11 @@ PasswordModelListener {
     public boolean onCreateOptionsMenu(Menu menu) {        
         searchMenuItem = menu.add(Menu.NONE, OPTION_MENU_SEARCH, Menu.NONE, getString(R.string.options_search));
         
-        searchMenuItem
+        MenuItemCompat.setShowAsAction(searchMenuItem
         .setActionView(R.layout.collapsable_search)
-        .setIcon(R.drawable.ic_menu_search)
-        .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+        .setIcon(R.drawable.ic_menu_search),MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
 
-        final EditText searchField = (EditText) searchMenuItem.getActionView().findViewById(R.id.search_field);
+        final EditText searchField = (EditText) MenuItemCompat.getActionView(searchMenuItem).findViewById(R.id.search_field);
 
         searchField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -207,7 +206,7 @@ PasswordModelListener {
             }    
         });
 
-        searchMenuItem.setOnActionExpandListener(new OnActionExpandListener() {
+        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
                 passwordCountTextView.setVisibility(View.GONE);

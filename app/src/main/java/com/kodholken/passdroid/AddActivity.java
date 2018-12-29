@@ -19,20 +19,20 @@
 
 package com.kodholken.passdroid;
 
-import android.view.Menu;
-import android.view.MenuItem;
-
-import com.kodholken.passdroid.db.PasswordData;
-
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.kodholken.passdroid.db.PasswordData;
 
 /**
  * Activity for adding new passwords.
@@ -132,8 +132,7 @@ public class AddActivity extends AppCompatTimeoutActivity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add("Save")
-            .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        MenuItemCompat.setShowAsAction(menu.add("Save"),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         
         return super.onCreateOptionsMenu(menu);
     }

@@ -19,6 +19,8 @@
 
 package com.kodholken.passdroid;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.SQLException;
@@ -26,7 +28,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
-import android.text.ClipboardManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -138,20 +139,21 @@ public class ShowActivity extends AppCompatTimeoutActivity {
         alertDialog.setTitle("Copy to clipboard");
         alertDialog.setMessage("Copy the password to clipboard?");
 
-        alertDialog.setButton(AlertDialog.BUTTON1, "Yes",
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() { 
             public void onClick(DialogInterface dialog, int which) {
                 String password = passwordView.getText().toString();
 
-                ClipboardManager clipboard = 
-                    (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                clipboard.setText(password);
+                ClipboardManager clipboard =
+                        (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("passdroid", password);
+                clipboard.setPrimaryClip(clip);
 
                 Session.getInstance().setClipboardPassword(password);
             }
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON2, "No",
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {}
         });
@@ -184,7 +186,7 @@ public class ShowActivity extends AppCompatTimeoutActivity {
         alertDialog.setTitle("Confirm delete");
         alertDialog.setMessage("Are your sure you want to delete "+system+"?");
 
-        alertDialog.setButton(AlertDialog.BUTTON1, "Yes",
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() { 
             public void onClick(DialogInterface dialog, int which) {
                 deletePassword();
@@ -192,7 +194,7 @@ public class ShowActivity extends AppCompatTimeoutActivity {
             }
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON2, "No", 
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
             }

@@ -19,10 +19,11 @@
 
 package com.kodholken.passdroid;
 
+import android.content.ClipData;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.text.ClipboardManager;
+import android.content.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -52,18 +53,19 @@ public class DisplayPasswordActivity extends AppCompatTimeoutActivity {
         alertDialog.setTitle("Copy to clipboard");
         alertDialog.setMessage("Copy the password to clipboard?");
 
-        alertDialog.setButton(AlertDialog.BUTTON1, "Yes",
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() { 
             public void onClick(DialogInterface dialog, int which) {
                 String password = passwordView.getText().toString();
                 ClipboardManager clipboard = 
                     (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                clipboard.setText(password);
+                ClipData clip = ClipData.newPlainText("passdroid", password);
+                clipboard.setPrimaryClip(clip);
                 Session.getInstance().setClipboardPassword(password);
             }
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON2, "No",
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {}
         });

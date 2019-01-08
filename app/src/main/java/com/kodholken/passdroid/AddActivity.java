@@ -133,7 +133,6 @@ public class AddActivity extends AppCompatTimeoutActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuItemCompat.setShowAsAction(menu.add("Save"),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-        
         return super.onCreateOptionsMenu(menu);
     }
     

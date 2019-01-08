@@ -112,7 +112,7 @@ public class PasswordModel {
         }
     }
 
-    private final void load() {
+    private void load() {
         if (!loaded || Session.getInstance().needReload()) {
             Session.getInstance().setNeedReload(false);
             loadPasswords();

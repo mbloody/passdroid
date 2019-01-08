@@ -19,6 +19,8 @@
 
 package com.kodholken.passdroid;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -30,7 +32,6 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
-import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -379,16 +380,18 @@ PasswordModelListener {
                 alertDialog.setTitle("Copy to clipboard");
                 alertDialog.setMessage("Copy the password to clipboard?");
 
-                alertDialog.setButton(AlertDialog.BUTTON1, "Yes",
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                         new DialogInterface.OnClickListener() { 
                     public void onClick(DialogInterface dialog, int which) {
-                        ClipboardManager clipboard = 
-                            (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-                        clipboard.setText(password);
+                        ClipboardManager clipboard =
+                                (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("passdroid", password);
+                        clipboard.setPrimaryClip(clip);
+                        Session.getInstance().setClipboardPassword(password);
                     }
                 });
 
-                alertDialog.setButton(AlertDialog.BUTTON2, "No",
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                         new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {}
                 });
@@ -405,7 +408,7 @@ PasswordModelListener {
         alertDialog.setTitle("Confirm logout");
         alertDialog.setMessage("Do you really want to log out?");
 
-        alertDialog.setButton(AlertDialog.BUTTON1, "Yes",
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() { 
             public void onClick(DialogInterface dialog, int which) {
                 Session.getInstance().logout();
@@ -413,7 +416,7 @@ PasswordModelListener {
             }
         });
 
-        alertDialog.setButton(AlertDialog.BUTTON2, "No",
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",
                 new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {}
         });

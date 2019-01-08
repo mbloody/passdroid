@@ -106,7 +106,7 @@ PasswordModelListener {
 
         setContentView(R.layout.password);
 
-        list = (ListView) findViewById(R.id.entryList);
+        list = findViewById(R.id.entryList);
         initLongClickListener();
 
         // Make sure settings are loaded on first run.
@@ -114,9 +114,9 @@ PasswordModelListener {
         // Make sure the password entries is loaded from the database
         Session.getInstance().setNeedReload(true);
 
-        emptyListHelp = (TextView) findViewById(R.id.empty_list_help);
+        emptyListHelp = findViewById(R.id.empty_list_help);
         
-        passwordCountTextView = (TextView) findViewById(R.id.password_count);
+        passwordCountTextView = findViewById(R.id.password_count);
         //getListView().setTextFilterEnabled(true);
 
         countdownLayout = new LinearLayout(this);
@@ -180,7 +180,7 @@ PasswordModelListener {
         .setActionView(R.layout.collapsable_search)
         .setIcon(R.drawable.ic_menu_search),MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
 
-        final EditText searchField = (EditText) MenuItemCompat.getActionView(searchMenuItem).findViewById(R.id.search_field);
+        final EditText searchField = MenuItemCompat.getActionView(searchMenuItem).findViewById(R.id.search_field);
 
         searchField.addTextChangedListener(new TextWatcher() {
             @Override

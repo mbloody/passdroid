@@ -57,24 +57,24 @@ public class EditActivity extends AppCompatTimeoutActivity {
         ((TextView) findViewById(R.id.system)).setText(extras.getString("system"));
         ((TextView) findViewById(R.id.username)).setText(extras.getString("username"));
 
-        password = (EditText) findViewById(R.id.password);
+        password = findViewById(R.id.password);
         password.setText(extras.getString("password"));
         
         String value;
         
-        note = (EditText) findViewById(R.id.note);
+        note = findViewById(R.id.note);
         value = extras.getString("note");
         if (value != null) {
             note.setText(value);
         }
         
-        url = (EditText) findViewById(R.id.url);
+        url = findViewById(R.id.url);
         value = extras.getString("url");
         if (value != null) {
             url.setText(value);
         }
 
-        saveButton = (Button) this.findViewById(R.id.save_button);
+        saveButton = this.findViewById(R.id.save_button);
         saveButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,7 +124,7 @@ public class EditActivity extends AppCompatTimeoutActivity {
     }
 
     private void setupGenerateButton() {
-        generateButton = (Button) findViewById(R.id.generate_button);
+        generateButton = findViewById(R.id.generate_button);
         generateButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

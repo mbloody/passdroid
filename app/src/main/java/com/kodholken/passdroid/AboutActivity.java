@@ -32,7 +32,7 @@ public class AboutActivity extends TimeoutActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.about);
 
-        TextView title = (TextView) findViewById(R.id.about_title);
+        TextView title = findViewById(R.id.about_title);
         title.setText("Passdroid v" + Utils.getVersion(this));
 
         getString(R.string.about_text);

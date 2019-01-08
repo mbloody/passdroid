@@ -36,7 +36,7 @@ public class InitializeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initialize);
 
-        okButton = (Button) this.findViewById(R.id.ok_button);
+        okButton = this.findViewById(R.id.ok_button);
         okButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +51,7 @@ public class InitializeActivity extends AppCompatActivity {
 
 
         p1 = ((EditText) findViewById(R.id.master_password_1)).getText().toString();
-        p2 = (EditText) findViewById(R.id.master_password_2);
+        p2 = findViewById(R.id.master_password_2);
 
         if (p1.equals(p2.getText().toString())) {
             initialize(p1);

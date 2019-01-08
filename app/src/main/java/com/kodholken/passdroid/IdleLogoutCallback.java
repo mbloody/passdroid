@@ -20,7 +20,7 @@
 package com.kodholken.passdroid;
 
 public interface IdleLogoutCallback {
-    public void idleLogoutCallback();
-    public void idleLogoutCountdown(int left);
-    public void idleLogoutCancel();
+    void idleLogoutCallback();
+    void idleLogoutCountdown(int left);
+    void idleLogoutCancel();
 }

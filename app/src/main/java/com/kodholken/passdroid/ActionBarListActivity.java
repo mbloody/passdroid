@@ -34,7 +34,7 @@ public abstract class ActionBarListActivity extends AppCompatTimeoutListActivity
     }
 
     private void initListView() {
-        mListView = (ListView) findViewById(getListViewId());
+        mListView = findViewById(getListViewId());
         if (mListView == null) {
             throw new RuntimeException(
                     "ListView cannot be null. Please set a valid ListViewId");

@@ -67,10 +67,10 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
 
         this.setContentView(R.layout.file_import);
         
-        importLayout = (LinearLayout) findViewById(R.id.import_layout);
-        searchingLayout = (LinearLayout) findViewById(R.id.searching_layout);
+        importLayout = findViewById(R.id.import_layout);
+        searchingLayout = findViewById(R.id.searching_layout);
 
-        cancelButton = (Button) this.findViewById(R.id.cancel_button);
+        cancelButton = this.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,8 +78,8 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
             }
         });
 
-        importButton = (Button) this.findViewById(R.id.import_button);
-        importDesc2 = (TextView) this.findViewById(R.id.import_desc_2);
+        importButton = this.findViewById(R.id.import_button);
+        importDesc2 = this.findViewById(R.id.import_desc_2);
         
         searchingForFiles = false;
         prepared = false;

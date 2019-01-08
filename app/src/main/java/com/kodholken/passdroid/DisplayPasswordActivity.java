@@ -47,7 +47,7 @@ public class DisplayPasswordActivity extends AppCompatTimeoutActivity {
      * choose if the password should be copied to the clipboard.
      */
     private void setupClipboardAction() {
-        final TextView passwordView = (TextView) findViewById(R.id.password);
+        final TextView passwordView = findViewById(R.id.password);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Copy to clipboard");
         alertDialog.setMessage("Copy the password to clipboard?");

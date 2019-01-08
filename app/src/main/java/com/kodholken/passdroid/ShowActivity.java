@@ -64,8 +64,8 @@ public class ShowActivity extends AppCompatTimeoutActivity {
 
         this.setContentView(R.layout.show);
 
-        TextView usernameView = (TextView) findViewById(R.id.username);
-        TextView usernameHeaderView = (TextView) findViewById(R.id.username_title);
+        TextView usernameView = findViewById(R.id.username);
+        TextView usernameHeaderView = findViewById(R.id.username_title);
 
         // Do not show the username entry if it does not exist
         if (username != null && username.length() > 0) {
@@ -77,15 +77,15 @@ public class ShowActivity extends AppCompatTimeoutActivity {
         ((TextView) findViewById(R.id.password)).setText(password);
 
         if (note != null && note.length() > 0) {
-            ((TextView) findViewById(R.id.note_title)).setVisibility(View.VISIBLE);
-            TextView text = (TextView) findViewById(R.id.note);
+            findViewById(R.id.note_title).setVisibility(View.VISIBLE);
+            TextView text = findViewById(R.id.note);
             text.setText(note);
             text.setVisibility(View.VISIBLE);
         }
         
         if (url != null && url.length() > 0) {
-            ((TextView) findViewById(R.id.url_title)).setVisibility(View.VISIBLE);
-            TextView text = (TextView) findViewById(R.id.url);
+            findViewById(R.id.url_title).setVisibility(View.VISIBLE);
+            TextView text = findViewById(R.id.url);
             text.setText(url);
             text.setVisibility(View.VISIBLE);
         }
@@ -133,7 +133,7 @@ public class ShowActivity extends AppCompatTimeoutActivity {
      * choose if the password should be copied to the clipboard.
      */
     private void setupClipboardAction() {
-        final TextView passwordView = (TextView) findViewById(R.id.password);
+        final TextView passwordView = findViewById(R.id.password);
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         alertDialog.setTitle("Copy to clipboard");
         alertDialog.setMessage("Copy the password to clipboard?");

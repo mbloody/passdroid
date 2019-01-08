@@ -37,7 +37,7 @@ public class ChangePasswordActivity extends AppCompatTimeoutActivity {
 
         this.setContentView(R.layout.change_password);
 
-        Button okButton = (Button) this.findViewById(R.id.ok_button);
+        Button okButton = this.findViewById(R.id.ok_button);
         okButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +46,7 @@ public class ChangePasswordActivity extends AppCompatTimeoutActivity {
             }
         });
 
-        Button cancelButton = (Button) this.findViewById(R.id.cancel_button);
+        Button cancelButton = this.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +57,7 @@ public class ChangePasswordActivity extends AppCompatTimeoutActivity {
     }
 
     private void handleOK() {
-        EditText oldPasswordView = (EditText) this.findViewById(
+        EditText oldPasswordView = this.findViewById(
                 R.id.old_master_password);
 
         String oldPassword = oldPasswordView.getText().toString();
@@ -71,9 +71,9 @@ public class ChangePasswordActivity extends AppCompatTimeoutActivity {
             return ;
         }
 
-        EditText newPassword1View = (EditText) this.findViewById(
+        EditText newPassword1View = this.findViewById(
                 R.id.master_password_1);
-        EditText newPassword2View = (EditText) this.findViewById(
+        EditText newPassword2View = this.findViewById(
                 R.id.master_password_2);
 
         String newPassword1 = newPassword1View.getText().toString();

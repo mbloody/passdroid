@@ -47,14 +47,14 @@ public class FileExportActivity extends AppCompatTimeoutActivity {
 
         this.setContentView(R.layout.file_export);
 
-        exportFilename = (EditText) this.findViewById(R.id.filename);
+        exportFilename = this.findViewById(R.id.filename);
         String filename = "/passdroid_db.xml";
         if (Environment.getExternalStorageDirectory() != null) {
             filename = Environment.getExternalStorageDirectory() + "/passdroid_db.xml";
         }
         exportFilename.setText(filename);
 
-        cancelButton = (Button) this.findViewById(R.id.cancel_button);
+        cancelButton = this.findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +62,7 @@ public class FileExportActivity extends AppCompatTimeoutActivity {
             }
         });
 
-        exportButton = (Button) this.findViewById(R.id.export_button);
+        exportButton = this.findViewById(R.id.export_button);
         exportButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +70,7 @@ public class FileExportActivity extends AppCompatTimeoutActivity {
             }
         });
         
-        encryptFileCheckbox = (CheckBox) findViewById(R.id.encrypt_export);
+        encryptFileCheckbox = findViewById(R.id.encrypt_export);
 
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)

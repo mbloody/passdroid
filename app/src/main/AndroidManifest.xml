@@ -24,6 +24,7 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,6 +44,7 @@
                   android:name=".EditActivity"/>
         
         <activity android:label="@string/login_title"
+                  android:windowSoftInputMode="adjustResize"
                   android:name=".LoginActivity"
                   android:theme="@style/Theme.AppCompat.NoActionBar"/>
 

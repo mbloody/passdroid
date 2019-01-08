@@ -74,7 +74,7 @@ public class GeneratePasswordActivity extends TimeoutActivity {
 
         setContentView(R.layout.generate_password);
 
-        lengthField = (EditText)  findViewById(R.id.length_input);
+        lengthField = findViewById(R.id.length_input);
         lengthField.setText("" + getStoredPasswordLength());
 
         Bundle extras = getIntent().getExtras();
@@ -99,7 +99,7 @@ public class GeneratePasswordActivity extends TimeoutActivity {
         //LinearGradient strengthMeter = new LinearGradient(0, 0, 50, 10, new int[] { 0x70ff0000, 0x70ffff00 }, null, Shader.TileMode.CLAMP);
         GradientDrawable strengthMeter = new GradientDrawable(Orientation.LEFT_RIGHT, new int[] { 0x90ff0000, 0x90ffff00, 0x9000ff00 });
 
-        ViewGroup vg = (ViewGroup) findViewById(R.id.layout_id);
+        ViewGroup vg = findViewById(R.id.layout_id);
 
         if (vg == null) {
             return ;
@@ -170,11 +170,11 @@ public class GeneratePasswordActivity extends TimeoutActivity {
     }
 
     private void setupStrengthImage() {
-        strengthImage = (ImageView) findViewById(R.id.strength_meter);
+        strengthImage = findViewById(R.id.strength_meter);
     }
 
     private void setupSpinner() {
-        spinner = (Spinner) findViewById(R.id.charset);
+        spinner = findViewById(R.id.charset);
         spinner.setSelection(getStoredCharset());
 
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -193,7 +193,7 @@ public class GeneratePasswordActivity extends TimeoutActivity {
     }
 
     private void setupIncButton() {
-        incButton = (ImageButton) findViewById(R.id.increment);
+        incButton = findViewById(R.id.increment);
 
         incButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -231,7 +231,7 @@ public class GeneratePasswordActivity extends TimeoutActivity {
     }
 
     private void setupDecButton() {
-        decButton = (ImageButton) findViewById(R.id.decrement);
+        decButton = findViewById(R.id.decrement);
 
         decButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -269,7 +269,7 @@ public class GeneratePasswordActivity extends TimeoutActivity {
     }
 
     private void setupCancelButton() {
-        Button cancelButton = (Button) findViewById(R.id.cancel_button);
+        Button cancelButton = findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -280,7 +280,7 @@ public class GeneratePasswordActivity extends TimeoutActivity {
     }
 
     private void setupGenerateButton() {
-        Button generateButton = (Button) findViewById(R.id.generate_button);
+        Button generateButton = findViewById(R.id.generate_button);
 
         final Intent ri = this.getIntent();
         final Context context = this;
@@ -359,7 +359,7 @@ public class GeneratePasswordActivity extends TimeoutActivity {
 
     private void storePasswordLength(int length) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().
-        putInt(passwordLengthKey, length).commit();
+        putInt(passwordLengthKey, length).apply();
     }
 
     private int getStoredCharset() {
@@ -369,6 +369,6 @@ public class GeneratePasswordActivity extends TimeoutActivity {
 
     private void storeCharset(int charset) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().
-        putInt(passwordCharsetKey, charset).commit();
+        putInt(passwordCharsetKey, charset).apply();
     }
 }

@@ -34,7 +34,7 @@ public class ImportPasswordActivity extends AppCompatTimeoutActivity {
 
         this.setContentView(R.layout.import_password);
         
-        password = (EditText) findViewById(R.id.password);
+        password = findViewById(R.id.password);
         
         findViewById(R.id.ok_button).setOnClickListener(new OnClickListener() {
             @Override

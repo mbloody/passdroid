@@ -48,9 +48,9 @@ public class AddActivity extends AppCompatTimeoutActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add);
 
-        password = (EditText) findViewById(R.id.password);
+        password = findViewById(R.id.password);
 
-        saveButton = (Button) this.findViewById(R.id.save_button);
+        saveButton = this.findViewById(R.id.save_button);
 
         saveButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -75,7 +75,7 @@ public class AddActivity extends AppCompatTimeoutActivity {
         ContentValues values = new ContentValues();
         PasswordEntry entry = new PasswordEntry();
 
-        v = (EditText) this.findViewById(R.id.system);
+        v = this.findViewById(R.id.system);
         // We require that the user has entered a valid system name
         if (v.getText().toString().matches("^\\s*$")) {
             Utils.alertDialog(this, "Empty system name",
@@ -84,13 +84,13 @@ public class AddActivity extends AppCompatTimeoutActivity {
         }
 
         entry.setDecSystem(v.getText().toString());		
-        v = (EditText) this.findViewById(R.id.username);
+        v = this.findViewById(R.id.username);
         entry.setDecUsername(v.getText().toString());
-        v = (EditText) this.findViewById(R.id.password);
+        v = this.findViewById(R.id.password);
         entry.setDecPassword(v.getText().toString());
-        v = (EditText) this.findViewById(R.id.note);
+        v = this.findViewById(R.id.note);
         entry.setDecNote(v.getText().toString());
-        v = (EditText) this.findViewById(R.id.url);
+        v = this.findViewById(R.id.url);
         entry.setDecUrl(v.getText().toString());
 
 
@@ -121,7 +121,7 @@ public class AddActivity extends AppCompatTimeoutActivity {
     }
 
     private void setupGenerateButton() {
-        generateButton = (Button) findViewById(R.id.generate_button);
+        generateButton = findViewById(R.id.generate_button);
         generateButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

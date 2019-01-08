@@ -98,9 +98,9 @@ public class PasswordAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.password_row, null);
 
             holder = new ViewHolder();
-            holder.system = (TextView) convertView.findViewById(R.id.system);
-            holder.username = (TextView) convertView.findViewById(R.id.username);
-            holder.separator = (TextView) convertView.findViewById(R.id.separator);
+            holder.system = convertView.findViewById(R.id.system);
+            holder.username = convertView.findViewById(R.id.username);
+            holder.separator = convertView.findViewById(R.id.separator);
 
             convertView.setTag(holder);
         } else {

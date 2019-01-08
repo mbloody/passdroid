@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.login);
 
-        passwordView = (EditText) findViewById(R.id.login_password);
+        passwordView = findViewById(R.id.login_password);
         passwordView.setOnKeyListener(new OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        loginButton = (Button) this.findViewById(R.id.login_button);
+        loginButton = this.findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
      * 
      */
     private void handleLogin() {
-        EditText t = (EditText) this.findViewById(R.id.login_password);
+        EditText t = this.findViewById(R.id.login_password);
         if (t != null) {
             String password = t.getText().toString();
             if (verifyPassword(password)) {

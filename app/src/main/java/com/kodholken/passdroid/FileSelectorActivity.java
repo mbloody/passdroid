@@ -50,7 +50,7 @@ public class FileSelectorActivity extends AppCompatTimeoutListActivity {
 
         setContentView(R.layout.file_selector);
         
-        fileList = (ListView) findViewById(android.R.id.list);
+        fileList = findViewById(android.R.id.list);
         fileList.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -58,9 +58,9 @@ public class FileSelectorActivity extends AppCompatTimeoutListActivity {
 			}
         });
         
-        directoryView = (TextView) findViewById(R.id.directory);
+        directoryView = findViewById(R.id.directory);
         
-        filterCheckbox = (CheckBox) findViewById(R.id.filter);
+        filterCheckbox = findViewById(R.id.filter);
         
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -247,9 +247,9 @@ public class FileSelectorActivity extends AppCompatTimeoutListActivity {
 	            convertView = inflater.inflate(R.layout.file_row, null);
 
 	            holder = new ViewHolder();
-	            holder.icon = (ImageView) convertView.findViewById(R.id.icon);
-	            holder.filename = (TextView) convertView.findViewById(R.id.filename);
-	            holder.date = (TextView) convertView.findViewById(R.id.date);
+	            holder.icon = convertView.findViewById(R.id.icon);
+	            holder.filename = convertView.findViewById(R.id.filename);
+	            holder.date = convertView.findViewById(R.id.date);
 
 	            convertView.setTag(holder);
 	        } else {

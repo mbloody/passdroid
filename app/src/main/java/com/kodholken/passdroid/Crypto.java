@@ -19,6 +19,7 @@
 
 package com.kodholken.passdroid;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 import java.util.zip.CRC32;
 
@@ -39,9 +40,9 @@ public class Crypto {
 
         try {
             Mac hmac = Mac.getInstance("HmacSHA256");
-            hmac.init (new SecretKeySpec ("notverysecretiv".getBytes ("UTF-8"),
+            hmac.init (new SecretKeySpec ("notverysecretiv".getBytes (StandardCharsets.UTF_8),
                                           "RAW"));
-            hmac.update(password.getBytes("UTF-8"));
+            hmac.update(password.getBytes(StandardCharsets.UTF_8));
             key = hmac.doFinal();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -248,7 +249,7 @@ public class Crypto {
         
         try {
             byte[] decrypted = decryptAesCbc(key, encrypted);
-            return new String(decrypted, 2, decrypted.length - 2, "UTF8");
+            return new String(decrypted, 2, decrypted.length - 2, StandardCharsets.UTF_8);
         } catch(Exception ex) {}
         
         return null;

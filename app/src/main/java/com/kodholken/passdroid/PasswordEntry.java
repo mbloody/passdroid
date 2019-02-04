@@ -19,6 +19,7 @@
 
 package com.kodholken.passdroid;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
 import javax.crypto.Cipher;
@@ -151,7 +152,7 @@ public class PasswordEntry implements Comparable<PasswordEntry> {
 
             cipher.init(Cipher.DECRYPT_MODE, skeySpec, ivSpec);
             decBytes = cipher.doFinal(encBytes, iv.length, encBytes.length - iv.length);
-            decrypted = new String(decBytes, 0, decBytes.length, "UTF8");
+            decrypted = new String(decBytes, 0, decBytes.length, StandardCharsets.UTF_8);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -175,7 +176,7 @@ public class PasswordEntry implements Comparable<PasswordEntry> {
             
             cipher.init(Cipher.DECRYPT_MODE, skeySpec, ivSpec);
             decBytes = cipher.doFinal(encBytes);
-            decrypted = new String(decBytes, 2, decBytes.length - 2, "UTF8");
+            decrypted = new String(decBytes, 2, decBytes.length - 2, StandardCharsets.UTF_8);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -196,7 +197,7 @@ public class PasswordEntry implements Comparable<PasswordEntry> {
             Cipher cipher = Cipher.getInstance("AES/ECB/PKCS7Padding");
             cipher.init(Cipher.DECRYPT_MODE, skeySpec);  
             decBytes = cipher.doFinal(encBytes);
-            decrypted = new String(decBytes, 2, decBytes.length - 2, "UTF8");
+            decrypted = new String(decBytes, 2, decBytes.length - 2, StandardCharsets.UTF_8);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

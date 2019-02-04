@@ -19,6 +19,8 @@
 
 package com.kodholken.passdroid;
 
+import java.nio.charset.StandardCharsets;
+
 public class Base64 {
     private static final char table[] = {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -137,7 +139,7 @@ public class Base64 {
             System.out.println("Test: " + Base64.encode(args[0].getBytes()));
             System.out.println("2: " + Base64.decode(Base64.encode(args[0].getBytes())));
             byte [] res = Base64.decode(Base64.encode(args[0].getBytes()));
-            String str = new String(res, 0, res.length, "UTF8");
+            String str = new String(res, 0, res.length, StandardCharsets.UTF_8);
             System.out.println("UTF8: " + str);
             for (int i = 0; i < res.length; i++) {
                 System.out.println(res[i]);

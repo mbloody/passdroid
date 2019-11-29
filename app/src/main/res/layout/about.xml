@@ -30,7 +30,7 @@
             android:id="@+id/about_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/dummy"
+            android:layout_alignParentEnd="true"
             android:layout_alignWithParentIfMissing="true"
             android:gravity="right"
             android:background="#000000"

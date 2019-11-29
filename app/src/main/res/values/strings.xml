@@ -98,7 +98,7 @@ The import will remove any existing passwords on this device.</string>
 <string name="import_description_file_present" formatted="false">%f contains %n entries.</string>
 
 <string name="import_description_encrypted_file_present" formatted="true">\
-The file %s is encrypted.</string>
+The file %1$s is encrypted.</string>
 
 <string name="import_description_file_missing">\
 Import not available. To enable it transfer your exported password file to the device\'s external storage. Make sure that the file is named passdroid_db.xml.</string>

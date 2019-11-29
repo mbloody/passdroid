@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.WindowManager.LayoutParams;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 public abstract class AppCompatTimeoutListActivity extends AppCompatActivity {
     private BroadcastReceiver receiver;

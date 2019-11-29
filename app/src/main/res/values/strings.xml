@@ -97,7 +97,7 @@ The import will remove any existing passwords on this device.</string>
 
 <string name="import_description_file_present" formatted="false">%f contains %n entries.</string>
 
-<string name="import_description_encrypted_file_present" formatted="false">\
+<string name="import_description_encrypted_file_present" formatted="true">\
 The file %s is encrypted.</string>
 
 <string name="import_description_file_missing">\

@@ -21,7 +21,7 @@ package com.kodholken.passdroid;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;

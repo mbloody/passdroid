@@ -44,20 +44,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileImportActivity extends AppCompatTimeoutActivity {
-	private LinearLayout importLayout;
-	private LinearLayout searchingLayout;
+    private LinearLayout importLayout;
+    private LinearLayout searchingLayout;
     private Button cancelButton;
     private Button importButton;
     private TextView importDesc2;
     private FileImporter fileImporter;
     private boolean searchingForFiles;
     private boolean prepared;
-    
+
     // We search this many levels in the filesystem when looking for import files
     private static final int FS_SEARCH_DEPTH = 3;
-    
+
     private static final String IMPORT_PASSWORD_FILE_NAME = "passdroid_db.xml";
-    
+
     private static final int IMPORT_PASSWORD_RESULT_ID = 1;
     private static final int SELECT_FILE_RESULT_ID = 2;
 
@@ -66,7 +66,7 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
         super.onCreate(savedInstanceState);
 
         this.setContentView(R.layout.file_import);
-        
+
         importLayout = findViewById(R.id.import_layout);
         searchingLayout = findViewById(R.id.searching_layout);
 
@@ -80,7 +80,7 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
 
         importButton = this.findViewById(R.id.import_button);
         importDesc2 = this.findViewById(R.id.import_desc_2);
-        
+
         searchingForFiles = false;
         prepared = false;
 
@@ -129,15 +129,14 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
     }
 
 
-
     @Override
     protected void onResume() {
-    	super.onResume();
-    	
-    	if (!prepared && !searchingForFiles) {
-    		searchingForFiles = true;
-    		new ImportFileFinderTask().execute();
-    	}
+        super.onResume();
+
+        if (!prepared && !searchingForFiles) {
+            searchingForFiles = true;
+            new ImportFileFinderTask().execute();
+        }
     }
 
     private void importEncrypted() {
@@ -147,9 +146,9 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
              * fails we ask the user to supply a different password.
              */
             fileImporter.parseEncrypted(Session.getInstance().getKey());
-            
+
             // If we get here the key was correct
-            
+
             PasswordModel model = PasswordModel.getInstance(this);
             model.setPasswords(fileImporter.getPasswordEntries());
             showDialog(getString(R.string.success), fileImporter.getPasswordEntries().length + " entries imported.");
@@ -162,17 +161,17 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
             startActivityForResult(i, IMPORT_PASSWORD_RESULT_ID);
         }
     }
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        
+
         searchingLayout.setVisibility(View.GONE);
         importLayout.setVisibility(View.VISIBLE);
-        
+
         if (requestCode == IMPORT_PASSWORD_RESULT_ID && resultCode == RESULT_OK && data.getExtras() != null) {
             String password = data.getExtras().getString("password");
-            
+
             try {
                 fileImporter.parseEncrypted(Crypto.hmacFromPassword(password));
                 PasswordModel model = PasswordModel.getInstance(this);
@@ -182,27 +181,27 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
                 showDialog(getString(R.string.failure), "Failed to decrypt the file. Please make sure you entered the correct password.");
             }
         } else if (requestCode == SELECT_FILE_RESULT_ID) {
-        	if (resultCode == RESULT_OK && data.getExtras() != null) {
-        		String filename = data.getStringExtra("filename");
-        		if (filename != null) {
-        			prepareImport(filename);
-        		}
-        	} else {
-        		// Something went wrong when selecting import file or the 
-        		// user pressed the back button. Since we don't have any
-        		// import file to work with we close down.
-        		finish();
-        	}
+            if (resultCode == RESULT_OK && data.getExtras() != null) {
+                String filename = data.getStringExtra("filename");
+                if (filename != null) {
+                    prepareImport(filename);
+                }
+            } else {
+                // Something went wrong when selecting import file or the
+                // user pressed the back button. Since we don't have any
+                // import file to work with we close down.
+                finish();
+            }
         }
     }
-    
+
     private void importUnencrypted() {
         PasswordModel model = PasswordModel.getInstance(this);
         if (model.setPasswords(fileImporter.getPasswordEntries())) {
             deleteFileDialog(getString(R.string.success),
-                             fileImporter.getPasswordEntries().length +
-                             " entries imported. Do you want to delete the imported file from the device?",
-                             fileImporter.getFilename());
+                    fileImporter.getPasswordEntries().length +
+                            " entries imported. Do you want to delete the imported file from the device?",
+                    fileImporter.getFilename());
         } else {
             showDialog(getString(R.string.failure), "Import failed.");
         }
@@ -244,15 +243,15 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
     }
 
     private String formatString(String template, String file, int nFiles,
-            String error) {
+                                String error) {
         return template.replaceAll("%f", file)
                 .replaceAll("%n", Integer.valueOf(nFiles).toString())
                 .replaceAll("%e", error);
     }
-    
+
     private void prepareImport(String filename) {
         fileImporter = new FileImporter(filename, Utils.getVersion(FileImportActivity.this));
-        
+
         try {
             if (fileImporter.isEncrypted()) {
                 String desc2 = getString(R.string.import_description_encrypted_file_present, filename);
@@ -263,7 +262,7 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
                     @Override
                     public void onClick(View v) {
                         importEncrypted();
-                    } 
+                    }
                 });
             } else {
                 fileImporter.parse();
@@ -278,7 +277,7 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
                     @Override
                     public void onClick(View v) {
                         importUnencrypted();
-                    } 
+                    }
                 });
             }
         } catch (FileImporterException ex) {
@@ -289,78 +288,78 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
             importDesc2.setText(desc2);
             importDesc2.setTextColor(Color.rgb(255, 50, 50));
         }
-        
+
         prepared = true;
     }
-    
+
     private class ImportFileFinderTask extends AsyncTask<Void, Void, List<String>> {
-		@Override
-		protected List<String> doInBackground(Void... params) {
-			ArrayList<String> paths = new ArrayList<String>();
+        @Override
+        protected List<String> doInBackground(Void... params) {
+            ArrayList<String> paths = new ArrayList<String>();
 
-			if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-				findImportFiles(paths, Environment.getExternalStorageDirectory(), FS_SEARCH_DEPTH);
-			}
-			
-			// This variable is present on, at least, some Samsung devices and is a 
-			// colon separated list with paths to "secondary" storage such as removeable
-			// SD cards and external USB drives.
-			String secondaryStorage = System.getenv("SECONDARY_STORAGE");
-			if (secondaryStorage == null) {
-				return paths;
-			}
+            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+                findImportFiles(paths, Environment.getExternalStorageDirectory(), FS_SEARCH_DEPTH);
+            }
 
-			for (String sec : secondaryStorage.split(":")) {
-				File f = new File(sec);
-				if (f.isDirectory()) {
-					findImportFiles(paths, f, FS_SEARCH_DEPTH);
-				}
-			}
+            // This variable is present on, at least, some Samsung devices and is a
+            // colon separated list with paths to "secondary" storage such as removeable
+            // SD cards and external USB drives.
+            String secondaryStorage = System.getenv("SECONDARY_STORAGE");
+            if (secondaryStorage == null) {
+                return paths;
+            }
 
-			return paths;
-		}
-		
-		@Override
-		protected void onPostExecute(List<String> result) {
-	    	Intent intent = new Intent(FileImportActivity.this, FileSelectorActivity.class);
-	    	
-	    	if (result.size() > 0) {
-	    		String [] fileArray = new String[result.size()];
-	    		result.toArray(fileArray);
-	    		intent.putExtra("files", fileArray);
-	    	}
-	    	
-	    	startActivityForResult(intent, SELECT_FILE_RESULT_ID);
-			
-			searchingForFiles = false;
-		}
+            for (String sec : secondaryStorage.split(":")) {
+                File f = new File(sec);
+                if (f.isDirectory()) {
+                    findImportFiles(paths, f, FS_SEARCH_DEPTH);
+                }
+            }
 
-		private void findImportFiles(ArrayList<String> paths, File dir, int fsSearchDepth) {
-			if (!dir.isDirectory()) {
-				return;
-			}
-			
-			if (!dir.canRead()) {
-				return;
-			}
-			
-			// Apparently dir.list() can return null even though the dir.isDirectory() returned true
-			String [] filenames = dir.list();
-			if (filenames == null) {
-				return;
-			}
+            return paths;
+        }
 
-			for (String filename : filenames) {
-				String absFile = dir.getAbsolutePath() + File.separator + filename;
-				File file = new File(absFile);
-				Log.i("XXX",filename);
+        @Override
+        protected void onPostExecute(List<String> result) {
+            Intent intent = new Intent(FileImportActivity.this, FileSelectorActivity.class);
 
-				if (fsSearchDepth > 1 && file.isDirectory()) {
-					findImportFiles(paths, file, fsSearchDepth - 1);
-				} else if (file.isFile() && filename.equals(IMPORT_PASSWORD_FILE_NAME)) {
-					paths.add(absFile);
-				}
-			}
-		}
+            if (result.size() > 0) {
+                String[] fileArray = new String[result.size()];
+                result.toArray(fileArray);
+                intent.putExtra("files", fileArray);
+            }
+
+            startActivityForResult(intent, SELECT_FILE_RESULT_ID);
+
+            searchingForFiles = false;
+        }
+
+        private void findImportFiles(ArrayList<String> paths, File dir, int fsSearchDepth) {
+            if (!dir.isDirectory()) {
+                return;
+            }
+
+            if (!dir.canRead()) {
+                return;
+            }
+
+            // Apparently dir.list() can return null even though the dir.isDirectory() returned true
+            String[] filenames = dir.list();
+            if (filenames == null) {
+                return;
+            }
+
+            for (String filename : filenames) {
+                String absFile = dir.getAbsolutePath() + File.separator + filename;
+                File file = new File(absFile);
+                Log.i("XXX", filename);
+
+                if (fsSearchDepth > 1 && file.isDirectory()) {
+                    findImportFiles(paths, file, fsSearchDepth - 1);
+                } else if (file.isFile() && filename.equals(IMPORT_PASSWORD_FILE_NAME)) {
+                    paths.add(absFile);
+                }
+            }
+        }
     }
 }

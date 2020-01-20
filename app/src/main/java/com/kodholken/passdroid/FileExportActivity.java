@@ -20,6 +20,7 @@
 package com.kodholken.passdroid;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;

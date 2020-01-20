@@ -22,15 +22,15 @@ package com.kodholken.passdroid;
 import java.nio.charset.StandardCharsets;
 
 public class Base64 {
-    private static final char table[] = {
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-        'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-        'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-        'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
-        'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-        'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-        'w', 'x', 'y', 'z', '0', '1', '2', '3',
-        '4', '5', '6', '7', '8', '9', '+', '/' 
+    private static final char[] table = {
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+            'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+            'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+            'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+            'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+            'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+            'w', 'x', 'y', 'z', '0', '1', '2', '3',
+            '4', '5', '6', '7', '8', '9', '+', '/'
     };
 
     public static String encode(byte [] data) {
@@ -145,11 +145,11 @@ public class Base64 {
                 System.out.println(res[i]);
             }
 
-            byte t [] = new byte[2];
+            byte[] t = new byte[2];
             t[0] = -128;
             t[1] = -23;
 
-            byte u [] = Base64.decode(Base64.encode(t));
+            byte[] u = Base64.decode(Base64.encode(t));
 
             for (int i = 0; i < u.length; i++) {
                 System.out.println(u[i]);

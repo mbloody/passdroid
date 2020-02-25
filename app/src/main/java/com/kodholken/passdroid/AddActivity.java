@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import androidx.core.view.MenuItemCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -132,7 +131,7 @@ public class AddActivity extends AppCompatTimeoutActivity {
     
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItemCompat.setShowAsAction(menu.add("Save"),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        menu.add("Save").setIcon(R.drawable.ic_menu_save).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         return super.onCreateOptionsMenu(menu);
     }
     
@@ -158,5 +157,6 @@ public class AddActivity extends AppCompatTimeoutActivity {
             this.password.setText(GeneratePasswordActivity.
                     getGeneratedPassword());
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

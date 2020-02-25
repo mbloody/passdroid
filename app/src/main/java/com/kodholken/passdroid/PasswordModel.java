@@ -43,7 +43,7 @@ public class PasswordModel {
         passwordData = new PasswordData(context.getApplicationContext());
         passwordData.verifyTable(); // Make sure data table exist
         loaded = false;
-        listeners = new ArrayList<PasswordModelListener>();
+        listeners = new ArrayList<>();
     }
 
     public static PasswordModel getInstance(Context context) {

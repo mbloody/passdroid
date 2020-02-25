@@ -24,7 +24,7 @@ import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import androidx.core.view.MenuItemCompat;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -59,15 +59,15 @@ public class EditActivity extends AppCompatTimeoutActivity {
 
         password = findViewById(R.id.password);
         password.setText(extras.getString("password"));
-        
+
         String value;
-        
+
         note = findViewById(R.id.note);
         value = extras.getString("note");
         if (value != null) {
             note.setText(value);
         }
-        
+
         url = findViewById(R.id.url);
         value = extras.getString("url");
         if (value != null) {
@@ -88,7 +88,7 @@ public class EditActivity extends AppCompatTimeoutActivity {
     }
 
     private void updatePassword() {
-        String system   = ((TextView) findViewById(R.id.system)).getText().toString();
+        String system = ((TextView) findViewById(R.id.system)).getText().toString();
         String username = ((TextView) findViewById(R.id.username)).getText().toString();
         String password = ((TextView) findViewById(R.id.password)).getText().toString();
         String note = ((TextView) findViewById(R.id.note)).getText().toString();
@@ -104,7 +104,7 @@ public class EditActivity extends AppCompatTimeoutActivity {
         entry.setDecUrl(url);
         entry.encryptAll(Session.getInstance().getKey());
 
-        values.put("system",   entry.getEncSystem());	
+        values.put("system", entry.getEncSystem());
         values.put("username", entry.getEncUsername());
         values.put("password", entry.getEncPassword());
         values.put("note", entry.getEncNote());
@@ -140,17 +140,16 @@ public class EditActivity extends AppCompatTimeoutActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == 1) {
             this.password.setText(GeneratePasswordActivity.getGeneratedPassword());
         }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItemCompat.setShowAsAction(menu.add("Save")
-        	.setIcon(R.drawable.ic_menu_save),MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
-
+        menu.add("Save")
+                .setIcon(R.drawable.ic_menu_save).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         return super.onCreateOptionsMenu(menu);
     }
 

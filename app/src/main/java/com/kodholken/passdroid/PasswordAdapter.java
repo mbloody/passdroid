@@ -62,7 +62,7 @@ public class PasswordAdapter extends BaseAdapter {
     }
     
     public void setFilterString(String s) {
-        ArrayList<PasswordEntry> hitList = new ArrayList<PasswordEntry>();
+        ArrayList<PasswordEntry> hitList = new ArrayList<>();
         
         if (s == null) {
             filter = null;

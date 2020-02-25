@@ -143,7 +143,7 @@ public class FileSelectorActivity extends AppCompatTimeoutListActivity {
     }
     
     private void updateFileList() {
-    	ArrayList<File> list = new ArrayList<File>();
+    	ArrayList<File> list = new ArrayList<>();
 
     	if (!displayAll && requestFiles != null) {
     		directoryView.setText("Detected import files");

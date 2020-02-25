@@ -28,8 +28,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import androidx.core.view.MenuItemCompat;
-import androidx.core.view.MenuItemCompat.OnActionExpandListener;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import android.text.Editable;
@@ -169,19 +167,19 @@ PasswordModelListener {
     
     @Override
     public boolean onSearchRequested() {
-        MenuItemCompat.expandActionView(searchMenuItem);
+        searchMenuItem.expandActionView();
         return true;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {        
         searchMenuItem = menu.add(Menu.NONE, OPTION_MENU_SEARCH, Menu.NONE, getString(R.string.options_search));
-        
-        MenuItemCompat.setShowAsAction(searchMenuItem
-        .setActionView(R.layout.collapsable_search)
-        .setIcon(R.drawable.ic_menu_search),MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
 
-        final EditText searchField = MenuItemCompat.getActionView(searchMenuItem).findViewById(R.id.search_field);
+        searchMenuItem
+                .setActionView(R.layout.collapsable_search)
+                .setIcon(R.drawable.ic_menu_search).setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
+
+        final EditText searchField = searchMenuItem.getActionView().findViewById(R.id.search_field);
 
         searchField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -207,7 +205,7 @@ PasswordModelListener {
             }    
         });
 
-        MenuItemCompat.setOnActionExpandListener(searchMenuItem, new OnActionExpandListener() {
+        searchMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(MenuItem item) {
                 passwordCountTextView.setVisibility(View.GONE);

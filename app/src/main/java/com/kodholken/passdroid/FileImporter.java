@@ -232,7 +232,7 @@ public class FileImporter {
 
         @Override
         public void parse(Node root) {
-            ArrayList<PasswordEntry> entries = new ArrayList<PasswordEntry>();
+            ArrayList<PasswordEntry> entries = new ArrayList<>();
 
             NodeList nodes = root.getChildNodes();
             for (int i = 0; i < nodes.getLength(); i++) {

@@ -295,7 +295,7 @@ public class FileImportActivity extends AppCompatTimeoutActivity {
     private class ImportFileFinderTask extends AsyncTask<Void, Void, List<String>> {
         @Override
         protected List<String> doInBackground(Void... params) {
-            ArrayList<String> paths = new ArrayList<String>();
+            ArrayList<String> paths = new ArrayList<>();
 
             if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
                 findImportFiles(paths, Environment.getExternalStorageDirectory(), FS_SEARCH_DEPTH);

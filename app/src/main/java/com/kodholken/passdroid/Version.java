@@ -19,6 +19,8 @@
 
 package com.kodholken.passdroid;
 
+import android.annotation.NonNull;
+
 /**
  * Container for version numbers
  */
@@ -98,7 +100,7 @@ public class Version implements Comparable<Version> {
 
         return (compareTo((Version) object) == 0);
     }
-
+    
     @Override
     public String toString() {
         return major + "." + minor;
